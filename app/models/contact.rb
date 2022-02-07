@@ -1,5 +1,5 @@
 class Contact < ApplicationRecord
-    belongs_to :kind
+    belongs_to :kind, optinal: true
 
     def author
         "Thiago Fagundes"
