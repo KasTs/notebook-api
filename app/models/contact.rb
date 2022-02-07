@@ -5,8 +5,16 @@ class Contact < ApplicationRecord
         "Thiago Fagundes"
     end
 
-    def as_json(options={})
-        super(methods: :author, root: true)
-    end
+    # def kind_description
+    #     self.kind.description
+    # end
 
+    def as_json(options={})
+        super(
+        root: true,
+        methods: :author,
+        #methods: [:kind_description, :author],
+        include: { kind: { only: :description }}
+        )
+    end
 end
