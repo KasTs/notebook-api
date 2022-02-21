@@ -48,6 +48,19 @@ namespace :dev do
     end
 
     puts "Telefones cadastrados com sucesso!"
+
+    puts "Cadastrando os endereços..."
+
+    Contact.all.each do |contact|
+      Address.create(
+        street: Faker::Address.street_address ,
+        city: Faker::Movies::LordOfTheRings.location ,
+        contact: contact
+      )
+    end
+
+    puts "endereços cadastrados com sucesso!"
+
   end
 
   def show_spinner(msg_start, msg_end = "Concluído!")
