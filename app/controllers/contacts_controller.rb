@@ -5,7 +5,7 @@ class ContactsController < ApplicationController
   def index
     @contacts = Contact.all
 
-    render json: @contacts, include: [:phones, :address]
+    render json: @contacts, include: [:phones, :kind, :address]
   end
 
   # GET /contacts/1
@@ -18,7 +18,7 @@ class ContactsController < ApplicationController
     @contact = Contact.new(contact_params)
 
     if @contact.save
-      render json: @contact, include: [:phones, :kind], status: :created, location: @contact
+      render json: @contact, include: [:phones, :kind, :address], status: :created, location: @contact
     else
       render json: @contact.errors, status: :unprocessable_entity
     end
